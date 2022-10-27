@@ -36,16 +36,16 @@ only and save the results in an Excel file.
 Perfect matches will return a DOI. Partial matches on the beginning of the
 title with still return a DOI, but with a `[MATCH PARTIEL]` prefix.
 
-#### Customizing the script
+## Customizing the scripts
 
 *For complete reference, please refer to Crossref API's
 [journals/{issn}/works/ endpoint](https://api.crossref.org/swagger-ui/index.html#/Journals/get_journals__issn__works)
 and habanero's [Crossref journals method](https://github.com/sckott/habanero/blob/main/habanero/crossref/crossref.py#L759)
 documentation.*
 
-Here is what you can quickly customize in the script, so it suits your needs.
+Here is what you can quickly customize in the scripts, so they suit your needs.
 
-**Constants**
+### Constants
 
 The ```BASE_DIR``` and ```EXCEL_FILE``` constants are used to save the
 resulting dataframe in an Excel file. Default is in the same directory as
