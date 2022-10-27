@@ -14,7 +14,7 @@ in your working directory and, in a command line terminal, type this command:
 
 ```pip install -r requirements.txt```
 
-This will install all required dependencies, including these three:
+This will install all required dependencies, including these four:
 
 - [habanero](https://habanero.readthedocs.io/) to make requests to the Crossref API;
 - [pandas](https://pandas.pydata.org/) to convert the API responses into a DataFrame;
@@ -24,13 +24,17 @@ This will install all required dependencies, including these three:
 
 ### journals.py script
 
-To use the script as is, simply open a command line terminal from your
-working directory and type this command:
+This script is used to build a systematic literature review of articles
+from specific journals, using their ISSN, and save the results in an
+Excel file.
 
-```python journals.py```
+### doi_from_titles.py script
 
-Verbosity has been added to the script, so you'll see it working from
-start to finish.
+This script is used to retrieve journal article DOIs using their title
+only and save the results in an Excel file.
+
+Perfect matches will return a DOI. Partial matches on the beginning of the
+title with still return a DOI, but with a `[MATCH PARTIEL]` prefix.
 
 #### Customizing the script
 
@@ -41,7 +45,7 @@ documentation.*
 
 Here is what you can quickly customize in the script, so it suits your needs.
 
-**Constants (lines 14-41)**
+**Constants**
 
 The ```BASE_DIR``` and ```EXCEL_FILE``` constants are used to save the
 resulting dataframe in an Excel file. Default is in the same directory as
@@ -60,27 +64,4 @@ In order to do so, you'll have to add your email address to the ```MAILTO```
 constant. By playing nice, you'll be rewarded with a more reliable service and
 directed to the *Polite Pool* of users.
 
-The ```METADATA``` constant contains the list of everything you need to retrieve
-as publication data. The complete list of available metadata can be found in the
-*Elements* section of the ```journals/{issn}/works``` endpoint's documentation.
-Please make sure that all ```METADATA``` items have a corresponding key in the
-```convert_to_dataframe``` function's ```data``` dictionary. Otherwise, the
-data won't be saved in Excel.
-
-**Functions (lines 44-153)**
-
-The ```main``` function contains the script's algorithm. It is contained in a
-```try... except``` block in order to gracefully terminate if something goes
-wrong.
-
-The ```convert_to_dataframe``` function takes the bare-bones dataset retrieved
-from the Crossref API and converts that data into a Pandas DataFrame. As mentioned
-in the *Constants* section, the ```data``` dictionary's keys must match the
-```METADATA``` constant list items.
-
-In the ```for item in dataset``` loop, only metadata returned in the form of
-strings or lists are taken care of, along with the ```author``` metadata. If you
-need to retrieved data that is from other classes, you'll have to edit that
-loop accordingly.
-
-Have fun! More examples will be published during summer and fall 2022.
+Have fun! More examples will be published as people ask for them.
